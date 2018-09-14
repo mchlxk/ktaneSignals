@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="no-js"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Signals &mdash; Keep Talking and Nobody Explodes Manual Page</title>
+    <meta name="viewport" content="initial-scale=1"> 
+	  <link href='https://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+
+<body>
+<div class="section">
+<!-- *********************************************************************** -->
+<!-- PAGE 1 **************************************************************** -->
+<div class="page page-bg-05">
+<div class="page-header">
+<span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+<span class="page-header-section-title">Signals</span>
+</div> <!-- page-header -->
+
+<div class="page-content">
+<img src="img/Signals.svg" class="diagram">
+<h2>On the Subject of Signals</h2>
+<p class="flavour-text">Do you know what a camelback looks like?</p>
+<p>
+There is an oscilloscope screen on The Signal Module. It shows a signal from either <b>Channel A</b> or <b>Channel B</b>. The channel to display can be chosen using channel selector CS.
+<br>
+<ul>
+<li><b>Channel A</b> (CS in left position) is connected to a given <b>input signal</b>.</li>
+<li><b>Channel B</b> (CS in right position) is connected to the <b>signal generator</b>.</li>
+</ul>
+<b>To disarm the module, setup the generator to generate correct signal for the given input signal (see Table 1) and press button B to submit.</b>
+<br><br>
+Refer to pictures <b>fig.1 ... fig.27</b> to identify the input signal and use <b>Table 1</b> to find the required generator signal.
+
+<h3>The Signal Generator:</h3>
+The generator product is an additive synthesis of three harmonic components:
+<br><br>
+<center>g(&phi;) = C1.sin(&phi;) + C2.sin(2&phi;) + C3.sin(3&phi;)</center>
+<br>
+Coefficients C1, C2 and C3 are controlled using switches <b>S1</b>, <b>S2</b> and <b>S3</b>.<br>
+All the switches have three available positions, which are translated to the following coefficient values:
+<ul>
+<li>0 &nbsp;...the component is not present in the output signal</li>
+<li>1 &nbsp;...the component is added with a positive coefficient</li>
+<li>-1 &nbsp;...the component is added with a negative coefficient</li>
+</ul>
+
+<b><em>!!! Caution - wiring of switches S1, S2 and S3 is randomly shuffled !!!</em></b>
+<br><br>
+Each coefficient is exclusively controlled by one of the switches S1, S2 or S3,
+but it is not known which switch should be used to control coefficient C1, C2 and C3 and how the switch position translates to the coefficient value!
+<br>
+
+<font size="-1">
+<ul>
+<li><b>Tip 1:</b> To decipher switch wirings, find the generator switch arrangement that produces a constant signal (fig.1) first. From this point, the switch wirings can be deciphered easily.</li>
+<li><b>Tip 2:</b> The input signal can be identified by re-creating an identical signal using the generator and then identifying the signal by looking at switch arrangement and referencing deciphered switch wirings.</li>
+<li><b>Pro-tip:</b> Seeing generator signal for only three wisely-chosen switch arrangements gives you all the information that's needed to fully decipher wirings for all the switches.</li>
+</ul>
+</font>
+
+</p>
+</div> <!-- page-content -->
+<div class="page-footer relative-footer">Page 1 of 3</div>
+</div> <!-- page -->
+<!-- *********************************************************************** -->
+<!-- PAGE 2 **************************************************************** -->
+<div class="page page-bg-01">
+<div class="page-header">
+<span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+<span class="page-header-section-title">Signals</span>
+</div> <!-- page-header -->
+<div class="page-content">
+<center>
+<table><tbody>
+<tr>
+<th colspan="6">Table 1</th>
+</tr>
+<tr>
+<th colspan="2">Input signal</th>
+<th></th>
+<th colspan="3">Required generator signal coefficients C1,C2,C3</th>
+</tr>
+<tr>
+<th>figure</th>
+<th>C1,C2,C3</th>
+<th></th>
+<th>No strikes</th>
+<th>One strike</th>
+<th>Two strikes</th>
+</tr>
+<tr><td>fig.1</td><td>0,0,0</td><td></td><td>-1,1,-1 &nbsp;&nbsp;(fig.24)</td><td>1,1,-1 &nbsp;&nbsp;(fig.15)</td><td>-1,1,1 &nbsp;&nbsp;(fig.23)</tr></td>
+<tr><td>fig.2</td><td>0,0,1</td><td></td><td>-1,-1,-1 &nbsp;&nbsp;(fig.27)</td><td>-1,1,-1 &nbsp;&nbsp;(fig.24)</td><td>1,1,-1 &nbsp;&nbsp;(fig.15)</tr></td>
+<tr><td>fig.3</td><td>0,0,-1</td><td></td><td>-1,-1,1 &nbsp;&nbsp;(fig.26)</td><td>-1,1,1 &nbsp;&nbsp;(fig.23)</td><td>0,1,-1 &nbsp;&nbsp;(fig.6)</tr></td>
+<tr><td>fig.4</td><td>0,1,0</td><td></td><td>1,1,-1 &nbsp;&nbsp;(fig.15)</td><td>1,1,1 &nbsp;&nbsp;(fig.14)</td><td>-1,-1,1 &nbsp;&nbsp;(fig.26)</tr></td>
+<tr><td>fig.5</td><td>0,1,1</td><td></td><td>1,1,1 &nbsp;&nbsp;(fig.14)</td><td>-1,-1,-1 &nbsp;&nbsp;(fig.27)</td><td>0,-1,-1 &nbsp;&nbsp;(fig.9)</tr></td>
+<tr><td>fig.6</td><td>0,1,-1</td><td></td><td>1,-1,-1 &nbsp;&nbsp;(fig.18)</td><td>0,-1,-1 &nbsp;&nbsp;(fig.9)</td><td>-1,-1,-1 &nbsp;&nbsp;(fig.27)</tr></td>
+<tr><td>fig.7</td><td>0,-1,0</td><td></td><td>-1,1,1 &nbsp;&nbsp;(fig.23)</td><td>-1,-1,1 &nbsp;&nbsp;(fig.26)</td><td>1,1,1 &nbsp;&nbsp;(fig.14)</tr></td>
+<tr><td>fig.8</td><td>0,-1,1</td><td></td><td>1,-1,1 &nbsp;&nbsp;(fig.17)</td><td>0,1,-1 &nbsp;&nbsp;(fig.6)</td><td>1,-1,-1 &nbsp;&nbsp;(fig.18)</tr></td>
+<tr><td>fig.9</td><td>0,-1,-1</td><td></td><td>0,1,1 &nbsp;&nbsp;(fig.5)</td><td>1,0,1 &nbsp;&nbsp;(fig.11)</td><td>-1,1,-1 &nbsp;&nbsp;(fig.24)</tr></td>
+<tr><td>fig.10</td><td>1,0,0</td><td></td><td>-1,0,1 &nbsp;&nbsp;(fig.20)</td><td>1,-1,-1 &nbsp;&nbsp;(fig.18)</td><td>1,0,1 &nbsp;&nbsp;(fig.11)</tr></td>
+<tr><td>fig.11</td><td>1,0,1</td><td></td><td>0,-1,-1 &nbsp;&nbsp;(fig.9)</td><td>0,-1,1 &nbsp;&nbsp;(fig.8)</td><td>1,0,-1 &nbsp;&nbsp;(fig.12)</tr></td>
+<tr><td>fig.12</td><td>1,0,-1</td><td></td><td>0,1,-1 &nbsp;&nbsp;(fig.6)</td><td>1,-1,1 &nbsp;&nbsp;(fig.17)</td><td>0,1,1 &nbsp;&nbsp;(fig.5)</tr></td>
+<tr><td>fig.13</td><td>1,1,0</td><td></td><td>1,0,-1 &nbsp;&nbsp;(fig.12)</td><td>0,1,1 &nbsp;&nbsp;(fig.5)</td><td>-1,0,1 &nbsp;&nbsp;(fig.20)</tr></td>
+<tr><td>fig.14</td><td>1,1,1</td><td></td><td>0,-1,1 &nbsp;&nbsp;(fig.8)</td><td>1,-1,0 &nbsp;&nbsp;(fig.16)</td><td>1,-1,1 &nbsp;&nbsp;(fig.17)</tr></td>
+<tr><td>fig.15</td><td>1,1,-1</td><td></td><td>-1,0,-1 &nbsp;&nbsp;(fig.21)</td><td>1,1,0 &nbsp;&nbsp;(fig.13)</td><td>1,-1,0 &nbsp;&nbsp;(fig.16)</tr></td>
+<tr><td>fig.16</td><td>1,-1,0</td><td></td><td>1,0,1 &nbsp;&nbsp;(fig.11)</td><td>-1,0,1 &nbsp;&nbsp;(fig.20)</td><td>1,1,0 &nbsp;&nbsp;(fig.13)</tr></td>
+<tr><td>fig.17</td><td>1,-1,1</td><td></td><td>1,1,0 &nbsp;&nbsp;(fig.13)</td><td>1,0,-1 &nbsp;&nbsp;(fig.12)</td><td>-1,1,0 &nbsp;&nbsp;(fig.22)</tr></td>
+<tr><td>fig.18</td><td>1,-1,-1</td><td></td><td>-1,-1,0 &nbsp;&nbsp;(fig.25)</td><td>-1,0,-1 &nbsp;&nbsp;(fig.21)</td><td>0,-1,1 &nbsp;&nbsp;(fig.8)</tr></td>
+<tr><td>fig.19</td><td>-1,0,0</td><td></td><td>1,-1,0 &nbsp;&nbsp;(fig.16)</td><td>0,0,1 &nbsp;&nbsp;(fig.2)</td><td>-1,0,-1 &nbsp;&nbsp;(fig.21)</tr></td>
+<tr><td>fig.20</td><td>-1,0,1</td><td></td><td>-1,1,0 &nbsp;&nbsp;(fig.22)</td><td>0,1,0 &nbsp;&nbsp;(fig.4)</td><td>0,0,1 &nbsp;&nbsp;(fig.2)</tr></td>
+<tr><td>fig.21</td><td>-1,0,-1</td><td></td><td>0,0,-1 &nbsp;&nbsp;(fig.3)</td><td>-1,-1,0 &nbsp;&nbsp;(fig.25)</td><td>-1,0,0 &nbsp;&nbsp;(fig.19)</tr></td>
+<tr><td>fig.22</td><td>-1,1,0</td><td></td><td>0,0,1 &nbsp;&nbsp;(fig.2)</td><td>-1,0,0 &nbsp;&nbsp;(fig.19)</td><td>1,0,0 &nbsp;&nbsp;(fig.10)</tr></td>
+<tr><td>fig.23</td><td>-1,1,1</td><td></td><td>0,0,0 &nbsp;&nbsp;(fig.1)</td><td>0,-1,0 &nbsp;&nbsp;(fig.7)</td><td>0,1,0 &nbsp;&nbsp;(fig.4)</tr></td>
+<tr><td>fig.24</td><td>-1,1,-1</td><td></td><td>0,1,0 &nbsp;&nbsp;(fig.4)</td><td>0,0,-1 &nbsp;&nbsp;(fig.3)</td><td>0,0,0 &nbsp;&nbsp;(fig.1)</tr></td>
+<tr><td>fig.25</td><td>-1,-1,0</td><td></td><td>-1,0,0 &nbsp;&nbsp;(fig.19)</td><td>0,0,0 &nbsp;&nbsp;(fig.1)</td><td>0,-1,0 &nbsp;&nbsp;(fig.7)</tr></td>
+<tr><td>fig.26</td><td>-1,-1,1</td><td></td><td>1,0,0 &nbsp;&nbsp;(fig.10)</td><td>-1,1,0 &nbsp;&nbsp;(fig.22)</td><td>0,0,-1 &nbsp;&nbsp;(fig.3)</tr></td>
+<tr><td>fig.27</td><td>-1,-1,-1</td><td></td><td>0,-1,0 &nbsp;&nbsp;(fig.7)</td><td>1,0,0 &nbsp;&nbsp;(fig.10)</td><td>-1,-1,0 &nbsp;&nbsp;(fig.25)</tr></td>
+</tbody></table>      
+</center>
+</div> <!-- page-content -->
+<div class="page-footer relative-footer">Page 2 of 3</div>
+</div> <!-- page -->
+<!-- *********************************************************************** -->
+<!-- PAGE 3 **************************************************************** -->
+<div class="page page-bg-03">
+<div class="page-header">
+<span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+<span class="page-header-section-title">Signals</span>
+</div> <!-- page-header -->
+<div class="page-content">
+<img src="img/Figures.png" width="100%" height="100%">
+</div> <!-- page-content -->
+<div class="page-footer relative-footer">Page 3 of 3</div>
+</div> <!-- page -->
+
+</div> <!-- section -->
+</body></html>
