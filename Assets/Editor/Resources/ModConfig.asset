@@ -13,7 +13,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: Signals
   title: Signals
-  description: 
+  description: 'Signals regular module.
+
+    * moduleID: Signals
+
+    * Twitch Plays support
+
+    * Github: https://github.com/mchlksk/ktaneSignals
+
+'
   version: 1.0
   outputFolder: build
-  previewImage: {fileID: 0}
+  previewImage: {fileID: 2800000, guid: 03596cdb8ad70914f9df8615ccb08814, type: 3}

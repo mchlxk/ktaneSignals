@@ -9,7 +9,6 @@ public class Signals : MonoBehaviour
 {
     private static int idCounter = 1;
     private readonly int moduleId = 0;
-    private readonly string moduleName;
     private readonly Logger logger;
 
     private enum ModuleStateE {
@@ -78,7 +77,7 @@ public class Signals : MonoBehaviour
 
         public void DEBUG(string message)
         {
-            Debug.LogFormat("[{0}#{1}] {2}", moduleName, moduleId, message);
+            Debug.LogFormat("[{0} #{1}] {2}", moduleName, moduleId, message);
         }
     }
 
@@ -539,8 +538,7 @@ public class Signals : MonoBehaviour
     public Signals()
     {
         moduleId = idCounter++;
-        moduleName = "Signals";
-        logger = new Logger(moduleName, moduleId);
+        logger = new Logger("Signals", moduleId);
     }
 
     // bomb generation (loading screen)
@@ -698,8 +696,7 @@ public class Signals : MonoBehaviour
         {
             case 0: solution = solutionSignalsNoStrikes.Get(inputSignal); break;
             case 1: solution = solutionSignalsOneStrike.Get(inputSignal); break;
-            case 2: solution = solutionSignalsTwoStrikes.Get(inputSignal); break;
-            default: throw new System.ApplicationException(string.Format("HandleBInteractEnded: unexpected number of strikes: {0}", BombInfo.GetStrikes()));
+            default: solution = solutionSignalsTwoStrikes.Get(inputSignal); break;
         }
 
         if (generatorSignal == solution)
@@ -718,15 +715,11 @@ public class Signals : MonoBehaviour
 
     private void HandleLightChange(bool on)
     {
-        if (on)
-            scope.Day = true;
-        else
-            scope.Day = false;
-
+        scope.Day = on ? true : false;
         scope.Update();
     }
 
-    private string TwitchHelpMessage =
+    private readonly string TwitchHelpMessage =
         "!{0} channel [switch channel] | " +
         "!{0} s1 [flip S1] | " +
         "!{0} s2 [flip S2] | " +
@@ -735,7 +728,7 @@ public class Signals : MonoBehaviour
         "!{0} submit [submit solution] | " +
         "Not case-senstitive";
 
-    /* private string TwitchManualCode = "https://ktane.timwi.de/HTML/Signals.html"; */
+    private readonly string TwitchManualCode = "https://ktane.timwi.de/HTML/Signals.html";
 
     KMSelectable[] ProcessTwitchCommand(string command)
     {
