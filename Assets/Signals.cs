@@ -728,8 +728,6 @@ public class Signals : MonoBehaviour
         "!{0} submit [submit solution] | " +
         "Not case-senstitive";
 
-    private readonly string TwitchManualCode = "https://ktane.timwi.de/HTML/Signals.html";
-
     KMSelectable[] ProcessTwitchCommand(string command)
     {
         command = command.ToLowerInvariant().Trim();
