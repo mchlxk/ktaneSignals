@@ -724,7 +724,7 @@ public class Signals : MonoBehaviour
         "!{0} s1 [flip S1] | " +
         "!{0} s2 [flip S2] | " +
         "!{0} s3 [flip S3] | " +
-        "!{0} s1 s1 s2 s3 [flip multipple switches] | " +
+        "!{0} s1 s1 s2 s3 [flip multiple switches] | " +
         "!{0} submit [submit solution] | " +
         "Not case-senstitive";
 
