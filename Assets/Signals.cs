@@ -224,7 +224,7 @@ public class Signals : MonoBehaviour
         {
             for (int i = 0; i < coefficients.Length; i++)
             {
-                switch (Random.Range(0, 2))
+                switch (Random.Range(0, 3))
                 {
                     case 0: coefficients[i] = CoefficientE.ZERO; break;
                     case 1: coefficients[i] = CoefficientE.POSITIVE; break;
