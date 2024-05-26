@@ -1,0 +1,235 @@
+set encoding utf8
+set macros
+
+TERMINAL_MANUAL = "set terminal png lw 2 notransparent size 640,480"
+TERMINAL_TEXTURE = "set terminal png lw 1 transparent size 658,396"
+
+MARGIN_MANUAL = "unset bmargin; unset lmargin; unset rmargin; unset tmargin"
+MARGIN_TEXTURE = "set bmargin 0; set lmargin 0; set rmargin 0; set tmargin 0"
+
+TITLE_MANUAL = "set title font 'Arial, 36' offset 0,-4"
+# set title offset 0,-22
+
+###
+
+AXIS_MANUAL = "\
+set xtics font 'Arial, 22' (0, '' 0.2*pi, '' 0.4*pi, '' 0.6*pi, '' 0.8*pi, 'π' 1.0*pi, '' 1.2*pi, '' 1.4*pi, '' 1.6*pi, '' 1.8*pi, '2π' 2.0*pi); \
+set ytics font 'Arial, 22'\
+"
+
+#set ytics ('' -2.5, -2.0, '' -1.5, -1.0, '' -0.5, 0.0, '' 0.5, 1.0, '' 1.5, 2.0, '' 2.5)
+#set ytics (-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0)
+
+#set tics scale 0
+
+AXIS_TEXTURE = "unset border; unset xtics; unset ytics;"
+
+###
+
+SETUP_COMMON = "reset; unset key; unset label; set xrange [0.0:2*pi]; set yrange [-3:3]"
+SETUP_MANUAL = "@TERMINAL_MANUAL; @MARGIN_MANUAL; @TITLE_MANUAL; @AXIS_MANUAL;"
+SETUP_TEXTURE = "@TERMINAL_TEXTURE; @MARGIN_TEXTURE; @AXIS_TEXTURE;"
+
+###
+
+LABEL_STYLE_MANUAL = "font 'Arial, 36' at pi,-2.6 center"
+
+PLOT_STYLE_MANUAL = "lt 1 lc rgb 'black' lw 1"
+PLOT_STYLE_TEXTURE = "lt 1 lc rgb 'black' lw 10"
+
+###
+
+DIR_MANUAL = "'./manual'"
+DIR_TEXTURE = "'./texture'"
+
+###
+
+SIG1 = "sin(x)"
+SIG2 = "sin(2*x)"
+SIG3 = "sin(3*x)"
+
+LBL1 = "'sin(φ)'"
+LBL2 = "'sin(2φ)'"
+LBL3 = "'sin(3φ)'"
+
+PLUS = "'+'"
+MINUS = "'-'"
+
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+GO = " \
+@SETUP_COMMON; \
+@SETUP_MANUAL; \
+set output sprintf('%s/%.2d%s.png', @DIR_MANUAL, @ID, @DESCRIPTOR); \
+set title sprintf('fig.%d', @ID); \
+set label @LABEL @LABEL_STYLE_MANUAL; \
+plot @SIGNAL @PLOT_STYLE_MANUAL; \
+@SETUP_COMMON; \
+@SETUP_TEXTURE; \
+set output sprintf('%s/%.2d%s.png', @DIR_TEXTURE, @ID, @DESCRIPTOR); \
+plot @SIGNAL @PLOT_STYLE_TEXTURE; \
+"
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+ID = "1"
+DESCRIPTOR = "'ZZZ'"
+LABEL = "'0'"
+SIGNAL = "0"
+@GO
+#-------------------------------------------------------------------------------
+ID = "2"
+DESCRIPTOR = "'ZZP'"
+LABEL = "@LBL3"
+SIGNAL = "@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "3"
+DESCRIPTOR = "'ZZN'"
+LABEL = "@MINUS.@LBL3"
+SIGNAL = "-@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "4"
+DESCRIPTOR = "'ZPZ'"
+LABEL = "@LBL2"
+SIGNAL = "@SIG2"
+@GO
+#-------------------------------------------------------------------------------
+ID = "5"
+DESCRIPTOR = "'ZPP'"
+LABEL = "@LBL2.@PLUS.@LBL3"
+SIGNAL = "@SIG2+@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "6"
+DESCRIPTOR = "'ZPN'"
+LABEL = "@LBL2.@MINUS.@LBL3"
+SIGNAL = "@SIG2-@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "7"
+DESCRIPTOR = "'ZNZ'"
+LABEL = "@MINUS.@LBL2"
+SIGNAL = "-@SIG2"
+@GO
+#-------------------------------------------------------------------------------
+ID = "8"
+DESCRIPTOR = "'ZNP'"
+LABEL = "@MINUS.@LBL2.@PLUS.@LBL3"
+SIGNAL = "-@SIG2+@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "9"
+DESCRIPTOR = "'ZNN'"
+LABEL = "@MINUS.@LBL2.@MINUS.@LBL3"
+SIGNAL = "-@SIG2-@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "10"
+DESCRIPTOR = "'PZZ'"
+LABEL = "@LBL1"
+SIGNAL = "@SIG1"
+@GO
+#-------------------------------------------------------------------------------
+ID = "11"
+DESCRIPTOR = "'PZP'"
+LABEL = "@LBL1.@PLUS.@LBL3"
+SIGNAL = "@SIG1+@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "12"
+DESCRIPTOR = "'PZN'"
+LABEL = "@LBL1.@MINUS.@LBL3"
+SIGNAL = "@SIG1-@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "13"
+DESCRIPTOR = "'PPZ'"
+LABEL = "@LBL1.@PLUS.@LBL2"
+SIGNAL = "@SIG1+@SIG2"
+@GO
+#-------------------------------------------------------------------------------
+ID = "14"
+DESCRIPTOR = "'PPP'"
+LABEL = "@LBL1.@PLUS.@LBL2.@PLUS.@LBL3"
+SIGNAL = "@SIG1+@SIG2+@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "15"
+DESCRIPTOR = "'PPN'"
+LABEL = "@LBL1.@PLUS.@LBL2.@MINUS.@LBL3"
+SIGNAL = "@SIG1+@SIG2-@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "16"
+DESCRIPTOR = "'PNZ'"
+LABEL = "@LBL1.@MINUS.@LBL2"
+SIGNAL = "@SIG1-@SIG2"
+@GO
+#-------------------------------------------------------------------------------
+ID = "17"
+DESCRIPTOR = "'PNP'"
+LABEL = "@LBL1.@MINUS.@LBL2.@PLUS.@LBL3"
+SIGNAL = "@SIG1-@SIG2+@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "18"
+DESCRIPTOR = "'PNN'"
+LABEL = "@LBL1.@MINUS.@LBL2.@MINUS.@LBL3"
+SIGNAL = "@SIG1-@SIG2-@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "19"
+DESCRIPTOR = "'NZZ'"
+LABEL = "@MINUS.@LBL1"
+SIGNAL = "-@SIG1"
+@GO
+#-------------------------------------------------------------------------------
+ID = "20"
+DESCRIPTOR = "'NZP'"
+LABEL = "@MINUS.@LBL1.@PLUS.@LBL3"
+SIGNAL = "-@SIG1+@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "21"
+DESCRIPTOR = "'NZN'"
+LABEL = "@MINUS.@LBL1.@MINUS.@LBL3"
+SIGNAL = "-@SIG1-@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "22"
+DESCRIPTOR = "'NPZ'"
+LABEL = "@MINUS.@LBL1.@PLUS.@LBL2"
+SIGNAL = "-@SIG1+@SIG2"
+@GO
+#-------------------------------------------------------------------------------
+ID = "23"
+DESCRIPTOR = "'NPP'"
+LABEL = "@MINUS.@LBL1.@PLUS.@LBL2.@PLUS.@LBL3"
+SIGNAL = "-@SIG1+@SIG2+@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "24"
+DESCRIPTOR = "'NPN'"
+LABEL = "@MINUS.@LBL1.@PLUS.@LBL2.@MINUS.@LBL3"
+SIGNAL = "-@SIG1+@SIG2-@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "25"
+DESCRIPTOR = "'NNZ'"
+LABEL = "@MINUS.@LBL1.@MINUS.@LBL2"
+SIGNAL = "-@SIG1-@SIG2"
+@GO
+#-------------------------------------------------------------------------------
+ID = "26"
+DESCRIPTOR = "'NNP'"
+LABEL = "@MINUS.@LBL1.@MINUS.@LBL2.@PLUS.@LBL3"
+SIGNAL = "-@SIG1-@SIG2+@SIG3"
+@GO
+#-------------------------------------------------------------------------------
+ID = "27"
+DESCRIPTOR = "'NNN'"
+LABEL = "@MINUS.@LBL1.@MINUS.@LBL2.@MINUS.@LBL3"
+SIGNAL = "-@SIG1-@SIG2-@SIG3"
+@GO
+#-------------------------------------------------------------------------------
